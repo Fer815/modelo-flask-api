@@ -21,10 +21,10 @@ target_size = (input_shape[1], input_shape[2])
 
 @app.route("/predecir", methods=["POST"])
 def predecir():
-    if 'file' not in request.files:
+    if 'imagen' not in request.files:
         return jsonify({"error": "Falta el archivo de imagen"}), 400
 
-    archivo = request.files["file"]
+    archivo = request.files["imagen"]
     imagen = Image.open(archivo).convert("RGB")
     imagen = imagen.resize(target_size)
     
